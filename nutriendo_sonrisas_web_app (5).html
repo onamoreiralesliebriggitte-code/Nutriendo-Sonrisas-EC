@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutriendo Sonrisas | Creciendo Sanitos en Guayas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelPink: '#FFE5EC',
+                        pastelDarkPink: '#F7A8B8',
+                        pastelMint: '#E8F8F5',
+                        pastelAqua: '#A3E4D7',
+                        pastelYellow: '#FFF5BA',
+                        pastelDarkYellow: '#F9E79F',
+                        pastelPurple: '#F3E8FF',
+                        pastelCream: '#FFFDF9',
+                        slateNavy: '#1E293B',
+                        brandAccent: '#E75480'
+                    },
+                    fontFamily: {
+                        sans: ['Quicksand', 'Inter', 'sans-serif'],
+                        title: ['Fredoka', 'Quicksand', 'sans-serif']
+                    },
+                    borderRadius: {
+                        '2xl': '20px',
+                        '3xl': '28px'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #FFFDF9;
+            color: #1E293B;
+        }
+
+        h1, h2, h3, h4, .font-title {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(247, 168, 184, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(247, 168, 184, 0.2);
+            border-radius: 24px;
+        }
+
+        /* 3D Card Flip Animation Ultra Clean */
+        .perspective-1000 {
+            perspective: 1200px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 28px;
+            overflow: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Soft Pulse for Card Action */
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        .pulse-subtle {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDF9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F7A8B8;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between overflow-x-hidden antialiased">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-pastelPink text-slateNavy text-xs sm:text-sm font-bold py-2 px-4 text-center border-b border-pink-200 flex items-center justify-center gap-2">
+        <span>📍 Investigación e Intervención Socioeducativa • Zonas Rurales de Guayas, Ecuador</span>
+        <span id="adminStatusBadge" class="hidden bg-emerald-500 text-white text-[11px] px-2.5 py-0.5 rounded-full font-extrabold shadow-xs">
+            ⚡ Modo Administradora Activo (Leslie)
+        </span>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-4 border-pastelPink border-dashed shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <!-- Brand Logo with exact official image -->
+            <a href="#inicio" class="flex items-center gap-3 sm:gap-4 group">
+                <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-pastelPink via-pastelYellow to-pastelMint p-1 shadow-md transition transform group-hover:scale-105">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw49M2J7jMGn0VqyuKZPNRQdEIzBzVpUBqYcXzLeVrkQ&s=10" 
+                         onerror="this.src='https://placehold.co/200x200/FFE5EC/1E293B?text=Nutriendo+Sonrisas'" 
+                         alt="Logotipo Oficial Nutriendo Sonrisas" 
+                         class="w-full h-full object-cover rounded-full bg-white">
+                </div>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-slateNavy tracking-tight leading-none font-title">
+                        Nutriendo Sonrisas
+                    </h1>
+                    <p class="text-xs sm:text-sm font-bold text-brandAccent tracking-wider uppercase mt-1">
+                        CRECIENDO SANITOS EN GUAYAS
+                    </p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-5 font-bold text-slateNavy text-sm">
+                <a href="#inicio" class="hover:text-brandAccent transition">Inicio</a>
+                <a href="#perfil-proyecto" class="hover:text-brandAccent transition">Perfil</a>
+                <a href="#mapa-guayas" class="hover:text-brandAccent transition">Mapa Guayas</a>
+                <a href="#simulador" class="hover:text-brandAccent transition">Simulador Neuronal</a>
+                <a href="#calculadora" class="hover:text-brandAccent transition">Plato Nutritivo</a>
+                <a href="#investigacion" class="hover:text-brandAccent transition">Investigaciones</a>
+                <a href="#videoteca" class="hover:text-brandAccent transition">Recetas</a>
+                <a href="#flashcards" class="hover:text-brandAccent transition">Flashcards 3D</a>
+            </nav>
+
+            <!-- Admin Button -->
+            <button id="adminLoginBtn" onclick="toggleAdminModal()" 
+                    class="bg-pastelYellow hover:bg-pastelDarkYellow text-amber-950 font-extrabold px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm shadow-xs transition border border-amber-200 flex items-center gap-2">
+                <i class="fa-solid fa-user-gear text-amber-800"></i>
+                <span id="adminBtnText">Modo Administradora</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section id="inicio" class="py-10 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-pastelMint text-teal-900 text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider border border-teal-200">
+                        <i class="fa-solid fa-brain"></i> Neurodesarrollo Infantil (0 a 5 años)
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slateNavy leading-tight font-title">
+                        Impacto de la desnutrición crónica en la <span class="text-brandAccent underline decoration-pastelDarkPink underline-offset-8">cognición y aprendizaje</span> rural
+                    </h2>
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                        Herramienta psicoeducativa interactiva sobre el córtex prefrontal, los primeros 1.000 días y la cocina económica nutritiva en cantones del Guayas.
+                    </p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
+                        <a href="#perfil-proyecto" class="bg-brandAccent hover:bg-pink-600 text-white font-extrabold px-6 py-3.5 rounded-full text-sm shadow-md transition transform hover:-translate-y-0.5">
+                            Ver Perfil del Proyecto 👩‍🔬
+                        </a>
+                        <a href="#simulador" class="bg-pastelAqua hover:bg-teal-300 text-teal-950 font-extrabold px-6 py-3.5 rounded-full text-sm shadow-xs transition border border-teal-300">
+                            Probar Simulador Cerebral 🧠
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Real-time Statistics Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md bg-white p-6 sm:p-7 rounded-3xl shadow-xl border-4 border-pastelPink space-y-5">
+                        <div class="flex items-center justify-between border-b border-pink-100 pb-3">
+                            <span class="text-xs font-extrabold text-brandAccent uppercase tracking-widest">Indicadores Guayas 2026</span>
+                            <span class="text-[10px] bg-pink-100 text-pink-700 font-bold px-2.5 py-0.5 rounded-full">INEC / OPS</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="bg-pastelPink/70 p-4 rounded-2xl border border-pink-200">
+                                <span class="text-3xl font-extrabold text-pink-700 block" id="statDci">27.7%</span>
+                                <span class="text-[11px] font-bold text-slate-700 leading-tight block mt-1">Desnutrición Crónica Rural</span>
+                            </div>
+                            <div class="bg-pastelYellow p-4 rounded-2xl border border-amber-200">
+                                <span class="text-3xl font-extrabold text-amber-900 block" id="statDays">1,000</span>
+                                <span class="text-[11px] font-bold text-slate-700 leading-tight block mt-1">Días Críticos Neurodesarrollo</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-pastelMint p-4 rounded-2xl border border-teal-200">
+                            <div class="flex items-center justify-between text-xs font-bold text-teal-900 mb-1">
+                                <span>Acceso a Agua Segura en Zonas Rurales</span>
+                                <span id="statWater">41.2%</span>
+                            </div>
+                            <div class="w-full bg-white/80 rounded-full h-3 border border-teal-200 overflow-hidden">
+                                <div id="statWaterBar" class="bg-teal-500 h-full rounded-full transition-all duration-700" style="width: 41.2%"></div>
+                            </div>
+                            <p class="text-[11px] text-teal-900 mt-2 leading-snug">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i> El agua sin hervir genera parasitosis que impide absorber el hierro y zinc.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Dynamic Admin Control Toolbar -->
+        <section id="adminToolbar" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
+            <div class="bg-gradient-to-r from-pastelPink via-pastelYellow to-pastelMint border-2 border-pink-300 rounded-3xl p-5 shadow-lg flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-brandAccent text-white flex items-center justify-center font-extrabold text-xl shadow-xs">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-slateNavy text-base font-title">Panel CMS de Administradora (Leslie)</h3>
+                        <p class="text-xs text-slate-600 font-medium">Gestiona artículos, recetas en video, datos de Guayas y flashcards en tiempo real.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="openArticleModal()" class="bg-pink-600 hover:bg-pink-700 text-white font-extrabold px-4 py-2.5 rounded-2xl text-xs shadow-xs transition">
+                        <i class="fa-solid fa-plus mr-1"></i> Nuevo Artículo
+                    </button>
+                    <button onclick="openVideoModal()" class="bg-teal-700 hover:bg-teal-800 text-white font-extrabold px-4 py-2.5 rounded-2xl text-xs shadow-xs transition">
+                        <i class="fa-solid fa-video mr-1"></i> Nueva Receta Video
+                    </button>
+                    <button onclick="openFlashcardModal()" class="bg-amber-600 hover:bg-amber-700 text-white font-extrabold px-4 py-2.5 rounded-2xl text-xs shadow-xs transition">
+                        <i class="fa-solid fa-clone mr-1"></i> Nueva Flashcard
+                    </button>
+                    <button onclick="openStatsModal()" class="bg-slateNavy hover:bg-black text-white font-extrabold px-4 py-2.5 rounded-2xl text-xs shadow-xs transition">
+                        <i class="fa-solid fa-chart-line mr-1"></i> Editar Indicadores
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PERFIL DEL PROYECTO & EQUIPO DE INVESTIGACIÓN -->
+        <section id="perfil-proyecto" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-lg border-4 border-pastelPink relative overflow-hidden">
+                <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                    <span class="text-xs font-extrabold text-brandAccent uppercase tracking-widest bg-pink-100 px-3.5 py-1.5 rounded-full">
+                        👩‍🔬 Identidad & Equipo Investigador
+                    </span>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-slateNavy font-title">
+                        Perfil del Proyecto Nutriendo Sonrisas
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 font-medium">
+                        Iniciativa psicoeducativa y neurocientífica enfocada en combatir la Desnutrición Crónica Infantil (DCI) y potencializar el córtex prefrontal en los cantones del Guayas.
+                    </p>
+                </div>
+
+                <!-- 3 Pillars of Profile -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-pastelPink/60 p-6 rounded-2xl border border-pink-200 text-center space-y-2">
+                        <div class="w-12 h-12 rounded-full bg-pink-500 text-white flex items-center justify-center text-xl mx-auto shadow-xs">🎯</div>
+                        <h4 class="font-extrabold text-slateNavy text-base font-title">Nuestra Misión</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-medium">
+                            Proporcionar herramientas visuales e interactivas a madres de familia, docentes y profesionales de la salud rural para prevenir el retraso neurocognitivo.
+                        </p>
+                    </div>
+
+                    <div class="bg-pastelMint p-6 rounded-2xl border border-teal-200 text-center space-y-2">
+                        <div class="w-12 h-12 rounded-full bg-teal-600 text-white flex items-center justify-center text-xl mx-auto shadow-xs">🔬</div>
+                        <h4 class="font-extrabold text-slateNavy text-base font-title">Enfoque Científico</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-medium">
+                            Basado en la evidencia de la neuroplasticidad y los primeros 1.000 días de vida, enfatizando la absorción de hierro y la estimulación temprana.
+                        </p>
+                    </div>
+
+                    <div class="bg-pastelYellow p-6 rounded-2xl border border-amber-200 text-center space-y-2">
+                        <div class="w-12 h-12 rounded-full bg-amber-600 text-white flex items-center justify-center text-xl mx-auto shadow-xs">📍</div>
+                        <h4 class="font-extrabold text-slateNavy text-base font-title">Alcance Guayas</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-medium">
+                            Intervención territorial adaptada a los insumos autóctonos y económicos de cantones como Balzar, Daule, Milagro, Tenguel y Samborondón.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Researcher Profiles -->
+                <div class="border-t border-pink-100 pt-8">
+                    <h4 class="text-center text-xl font-extrabold text-slateNavy font-title mb-6">
+                        Líderes de la Investigación
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        <!-- Principal Researcher (Leslie) -->
+                        <div class="bg-pastelCream p-6 rounded-2xl border-2 border-pink-200 flex flex-col sm:flex-row items-center gap-5 shadow-xs">
+                            <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-pastelPink to-pastelYellow p-1 flex-shrink-0 shadow-md">
+                                <div class="w-full h-full rounded-full bg-pink-100 flex items-center justify-center text-3xl font-extrabold text-pink-600 font-title">
+                                    👩‍⚕️
+                                </div>
+                            </div>
+                            <div class="space-y-1.5 text-center sm:text-left">
+                                <span class="bg-brandAccent text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full">
+                                    Investigadora Principal
+                                </span>
+                                <h5 class="text-lg font-extrabold text-slateNavy font-title">Leslie</h5>
+                                <p class="text-xs font-bold text-pink-700">Especialista en Neurodesarrollo & Nutrición Infantil</p>
+                                <p class="text-[11px] text-slate-600 font-medium leading-relaxed">
+                                    Directora del proyecto socioeducativo "Nutriendo Sonrisas". Encargada de la evaluación diagnóstica territorial en cantones del Guayas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Co-researcher / Academic Support -->
+                        <div class="bg-pastelCream p-6 rounded-2xl border-2 border-teal-200 flex flex-col sm:flex-row items-center gap-5 shadow-xs">
+                            <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-pastelMint to-pastelAqua p-1 flex-shrink-0 shadow-md">
+                                <div class="w-full h-full rounded-full bg-teal-100 flex items-center justify-center text-3xl font-extrabold text-teal-700 font-title">
+                                    🔬
+                                </div>
+                            </div>
+                            <div class="space-y-1.5 text-center sm:text-left">
+                                <span class="bg-teal-700 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full">
+                                    Equipo Académico
+                                </span>
+                                <h5 class="text-lg font-extrabold text-slateNavy font-title">Equipo de Intervención Guayas</h5>
+                                <p class="text-xs font-bold text-teal-800">Salud Pública & Neuropsicología</p>
+                                <p class="text-[11px] text-slate-600 font-medium leading-relaxed">
+                                    Colaboradores de campo dedicados a la recolección de métricas de anemia, desnutrición crónica e higiene de agua segura.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: INTERACTIVE GUAYAS CANTONS MAP -->
+        <section id="mapa-guayas" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="text-center max-w-3xl mx-auto mb-8 space-y-2">
+                <span class="text-xs font-extrabold text-brandAccent uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Diagnóstico Territorial Guayas</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slateNavy font-title">Mapa Interactivo de Vulnerabilidad en Cantones del Guayas</h3>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">Haz clic en los 9 cantones rurales monitoreados para evaluar la desnutrición crónica (DCI), la anemia y la intervención sugerida.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <!-- Canton Selector Buttons Grid -->
+                <div class="lg:col-span-5 grid grid-cols-3 gap-2.5" id="cantonButtonsContainer">
+                    <!-- Dynamic Canton Buttons populated here -->
+                </div>
+
+                <!-- Active Canton Detail Display Card -->
+                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl shadow-md border-2 border-pastelPink relative overflow-hidden" id="cantonCard">
+                    <div class="flex items-center justify-between border-b border-pink-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-brandAccent uppercase tracking-wider">Provincia del Guayas • Zona Rural</span>
+                            <h4 class="text-2xl font-extrabold text-slateNavy font-title" id="cantonName">Selecciona un Cantón</h4>
+                        </div>
+                        <span class="w-12 h-12 rounded-2xl bg-pastelYellow flex items-center justify-center text-2xl shadow-xs" id="cantonIcon">📍</span>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-slate-600 mb-6 font-medium leading-relaxed" id="cantonDesc">
+                        Haz clic en cualquiera de los sectores rurales para desplegar los porcentajes de desnutrición, anemia y calidad de agua.
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-3 text-center mb-5">
+                        <div class="bg-pastelPink/70 p-3.5 rounded-2xl border border-pink-200">
+                            <span class="text-xs font-bold text-slate-600 block">Desnutrición (DCI)</span>
+                            <span class="text-xl font-extrabold text-pink-700 mt-1 block font-title" id="cantonDci">--</span>
+                        </div>
+                        <div class="bg-pastelYellow p-3.5 rounded-2xl border border-amber-200">
+                            <span class="text-xs font-bold text-slate-600 block">Anemia Infantil</span>
+                            <span class="text-xl font-extrabold text-amber-900 mt-1 block font-title" id="cantonAnemia">--</span>
+                        </div>
+                        <div class="bg-pastelMint p-3.5 rounded-2xl border border-teal-200">
+                            <span class="text-xs font-bold text-slate-600 block">Agua Potable</span>
+                            <span class="text-xl font-extrabold text-teal-900 mt-1 block font-title" id="cantonWater">--</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-pastelPurple p-4 rounded-2xl border border-purple-200 flex items-start gap-3">
+                        <span class="text-xl">💡</span>
+                        <div>
+                            <span class="text-xs font-extrabold text-purple-950 uppercase tracking-wider block">Intervención Comunitaria Recomendada:</span>
+                            <p class="text-xs text-purple-900 mt-0.5 font-medium leading-snug" id="cantonIntervention">--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INTERACTIVE BRAIN & NEURODEVELOPMENT SIMULATOR -->
+        <section id="simulador" class="bg-gradient-to-b from-white via-pastelMint/40 to-white py-14 border-y border-pink-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                    <span class="text-xs font-extrabold text-teal-900 uppercase tracking-widest bg-teal-100 px-3 py-1 rounded-full">Simulador Neurocientífico</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slateNavy font-title">Simulador de Maduración del Córtex Prefrontal</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 font-medium">Ajusta la edad e interrumpe o potencia la nutrición para evaluar el impacto en la retención de memoria y la adquisición del lenguaje.</p>
+                </div>
+
+                <div class="glass-card p-6 sm:p-8 max-w-4xl mx-auto">
+                    <!-- Interactive Controls -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">1. Condición Nutricional del Niño:</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="setSimCondition('adecuada')" id="btnCondAdecuada" 
+                                        class="py-3 px-4 rounded-2xl text-xs font-extrabold transition border border-teal-300 bg-pastelMint text-teal-950 shadow-xs">
+                                    🥦 Nutrición Completa
+                                </button>
+                                <button onclick="setSimCondition('desnutricion')" id="btnCondDesnutricion" 
+                                        class="py-3 px-4 rounded-2xl text-xs font-extrabold transition border border-gray-200 bg-white text-gray-600 hover:bg-pink-50">
+                                    ⚠️ Desnutrición Crónica
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">2. Etapa del Lactante/Infante: <span id="simAgeLabel" class="text-brandAccent font-extrabold text-sm">24 Meses (2 Años)</span></label>
+                            <input type="range" min="1" max="4" value="3" step="1" id="simAgeRange" oninput="updateSimulator()" 
+                                   class="w-full h-3 bg-pink-200 rounded-lg appearance-none cursor-pointer accent-pink-500">
+                            <div class="flex justify-between text-[11px] font-bold text-slate-500 mt-1">
+                                <span>6 Meses</span>
+                                <span>12 Meses</span>
+                                <span>24 Meses</span>
+                                <span>5 Años</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Brain Representation Output -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center bg-white p-6 rounded-3xl border border-pink-100 shadow-xs">
+                        <div class="md:col-span-5 text-center flex flex-col items-center justify-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                            <div class="relative w-36 h-36 flex items-center justify-center">
+                                <i class="fa-solid fa-brain text-7xl transition-all duration-500" id="brainIcon" style="color: #A3E4D7"></i>
+                                <div class="absolute inset-0 flex items-center justify-center gap-2" id="synapseContainer">
+                                    <span class="synapse-dot w-3 h-3 rounded-full bg-teal-400"></span>
+                                    <span class="synapse-dot w-2 h-2 rounded-full bg-pink-400"></span>
+                                    <span class="synapse-dot w-3 h-3 rounded-full bg-amber-400"></span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-extrabold text-slate-700 mt-3" id="simDensityText">Densidad Sináptica: Alta (95%)</span>
+                        </div>
+
+                        <div class="md:col-span-7 space-y-3">
+                            <h4 class="font-extrabold text-slateNavy text-base sm:text-lg font-title" id="simTitle">Desarrollo a los 24 Meses con Nutrición Adecuada</h4>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium" id="simDesc">
+                                Mielinización acelerada en el córtex prefrontal. El niño retiene palabras nuevas con facilidad y explora activamente el entorno.
+                            </p>
+                            
+                            <div class="space-y-2 pt-2">
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                        <span>Memoria de Trabajo & Atención</span>
+                                        <span id="scoreMemory">90%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                                        <div id="barMemory" class="bg-teal-500 h-full rounded-full transition-all duration-500" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                        <span>Lenguaje Expresivo & Comprensión</span>
+                                        <span id="scoreLang">85%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                                        <div id="barLang" class="bg-pink-500 h-full rounded-full transition-all duration-500" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2.5: CALCULADORA COMUNITARIA DE PLATO NUTRITIVO -->
+        <section id="calculadora" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                <span class="text-xs font-extrabold text-amber-900 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Herramienta Interactiva para Familias</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slateNavy font-title">Calculadora Comunitaria de Plato Nutritivo</h3>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">Selecciona los alimentos que tienes disponibles en casa para evaluar si el plato satisface las necesidades de neurodesarrollo de tu hijo.</p>
+            </div>
+
+            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-pastelYellow grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Ingredients Checklist -->
+                <div class="lg:col-span-7 space-y-4">
+                    <h4 class="font-extrabold text-slateNavy text-base font-title flex items-center gap-2">
+                        <span>🛒</span> Selecciona los ingredientes del plato:
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="ingredientOptions">
+                        <!-- Dynamic checkboxes loaded via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Plate Nutritional Balance Meter -->
+                <div class="lg:col-span-5 bg-pastelCream p-6 rounded-3xl border border-amber-200 space-y-5">
+                    <div class="flex items-center justify-between border-b border-amber-200 pb-3">
+                        <h4 class="font-extrabold text-slateNavy text-base font-title">Evaluación del Plato</h4>
+                        <span id="plateScoreBadge" class="bg-amber-200 text-amber-900 text-xs font-extrabold px-3 py-1 rounded-full">
+                            Incompleto
+                        </span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                <span>Absorción de Hierro (Frena Anemia)</span>
+                                <span id="scoreIron">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                                <div id="barIron" class="bg-red-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                <span>Proteína para Sinapsis Cerebral</span>
+                                <span id="scoreProtein">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                                <div id="barProtein" class="bg-amber-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                <span>Energía Saludable</span>
+                                <span id="scoreEnergy">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                                <div id="barEnergy" class="bg-teal-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl border border-amber-200 space-y-1">
+                        <span class="text-xs font-extrabold text-amber-900 uppercase tracking-wider block">Recomendación Nutricional:</span>
+                        <p class="text-xs text-slate-600 leading-snug font-medium" id="plateAdvice">
+                            Agrega al menos una fuente de proteína (huevo, lenteja o sardina) y cítricos (limón/naranja) para activar la absorción de hierro.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: RESEARCH ARTICLES & PUBLICATIONS -->
+        <section id="investigacion" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold text-brandAccent uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Evidencia Científica</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slateNavy mt-2 font-title">Investigaciones & Recursos Educativos</h3>
+                </div>
+                <div class="w-full sm:w-auto">
+                    <input type="text" id="articleSearchInput" onkeyup="filterArticles()" placeholder="🔍 Buscar temas (ej. Hierro, Guayas)..." 
+                           class="w-full sm:w-72 px-4 py-2.5 rounded-full border border-pink-200 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-pink-300 bg-white">
+                </div>
+            </div>
+
+            <div id="articlesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamic Articles populated here -->
+            </div>
+        </section>
+
+        <!-- SECTION 4: RECIPE VIDEOS & AUDIOVISUAL TUTORIALS -->
+        <section id="videoteca" class="bg-white py-14 border-y border-pink-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                    <span class="text-xs font-extrabold text-amber-900 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Sazón & Nutrición Guayacense</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slateNavy font-title">Video Tutoriales: Recetas Económicas del Guayas</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 font-medium">Reproduce directamente los videos con preparaciones nutritivas a base de plátano verde, yuca, granos, huevo y queso fresco.</p>
+                </div>
+
+                <div id="videosContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic Videos with Embeds populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: INTERACTIVE 3D FLASHCARDS -->
+        <section id="flashcards" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+                <span class="inline-flex items-center gap-2 text-xs font-extrabold text-pink-700 uppercase tracking-widest bg-pink-100/90 border border-pink-200 px-4 py-1.5 rounded-full shadow-xs">
+                    ✨ Juego Didáctico Interactivo
+                </span>
+                <h3 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slateNavy font-title tracking-tight">
+                    Fichas de Descubrimiento Neuro-Nutritivo
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 font-semibold max-w-xl mx-auto leading-relaxed">
+                    Haz clic o toca cualquiera de las fichas para dar la vuelta y descubrir la evidencia neurocientífica explicada de forma sencilla.
+                </p>
+            </div>
+
+            <!-- Soft Pill Filters Navbar -->
+            <div class="flex flex-wrap justify-center items-center gap-2.5 mb-10">
+                <button onclick="filterFlashcards('todas', this)" class="fc-filter-btn active bg-brandAccent text-white text-xs sm:text-sm font-extrabold px-5 py-2.5 rounded-full transition-all duration-300 shadow-md flex items-center gap-2 transform scale-105">
+                    <span>🌈 Todas</span>
+                </button>
+                <button onclick="filterFlashcards('cognicion', this)" class="fc-filter-btn bg-white hover:bg-purple-50 text-purple-900 text-xs sm:text-sm font-extrabold px-5 py-2.5 rounded-full transition-all duration-300 border-2 border-purple-100 shadow-xs flex items-center gap-1.5">
+                    <span>🧠 Cognición</span>
+                </button>
+                <button onclick="filterFlashcards('nutricion', this)" class="fc-filter-btn bg-white hover:bg-emerald-50 text-emerald-900 text-xs sm:text-sm font-extrabold px-5 py-2.5 rounded-full transition-all duration-300 border-2 border-emerald-100 shadow-xs flex items-center gap-1.5">
+                    <span>🥗 Nutrición Guayas</span>
+                </button>
+                <button onclick="filterFlashcards('saneamiento', this)" class="fc-filter-btn bg-white hover:bg-sky-50 text-sky-900 text-xs sm:text-sm font-extrabold px-5 py-2.5 rounded-full transition-all duration-300 border-2 border-sky-100 shadow-xs flex items-center gap-1.5">
+                    <span>🚰 Agua & Salud</span>
+                </button>
+                <button onclick="filterFlashcards('crianza', this)" class="fc-filter-btn bg-white hover:bg-amber-50 text-amber-900 text-xs sm:text-sm font-extrabold px-5 py-2.5 rounded-full transition-all duration-300 border-2 border-amber-100 shadow-xs flex items-center gap-1.5">
+                    <span>👨‍👩‍👧 Crianza & Mitos</span>
+                </button>
+            </div>
+
+            <!-- Grid -->
+            <div id="flashcardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Dynamic Flashcards populated here -->
+            </div>
+        </section>
+
+        <!-- Social Commitment Banner -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="bg-gradient-to-r from-pastelPink via-pastelYellow to-pastelMint p-8 sm:p-12 rounded-3xl text-center shadow-lg relative overflow-hidden border border-pink-200">
+                <div class="relative z-10 space-y-3">
+                    <span class="text-4xl block">🌱👶🏽</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slateNavy font-title">Unidos por la Niñez Rural del Guayas</h3>
+                    <p class="text-xs sm:text-sm text-slate-700 max-w-2xl mx-auto font-bold leading-relaxed">
+                        Promoviendo la alimentación complementaria oportuna, el agua hervida y la estimulación temprana para asegurar el potencial intelectual de los niños.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Navigation & Credits -->
+    <footer class="bg-white border-t border-pink-100 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw49M2J7jMGn0VqyuKZPNRQdEIzBzVpUBqYcXzLeVrkQ&s=10" 
+                     onerror="this.src='https://placehold.co/100x100/FFE5EC/1E293B?text=NS'" 
+                     alt="Logo Nutriendo Sonrisas" class="w-9 h-9 rounded-full object-cover">
+                <span class="font-extrabold text-slateNavy text-sm font-title">Nutriendo Sonrisas • Guayas, Ecuador 2026</span>
+            </div>
+            <p class="font-medium">© Proyecto socioeducativo e intervención en desnutrición infantil.</p>
+        </div>
+    </footer>
+
+    <!-- ================= MODALS & FORMS ================= -->
+
+    <!-- Admin Password Modal -->
+    <div id="adminModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border-4 border-pastelPink">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-extrabold text-slateNavy flex items-center gap-2 font-title">
+                    <i class="fa-solid fa-user-shield text-brandAccent"></i> Autenticación Administradora
+                </h3>
+                <button onclick="toggleAdminModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <p class="text-xs text-slate-600 mb-4 font-medium">Ingresa la clave para acceder al panel CMS de edición.</p>
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-extrabold text-slate-700 mb-1">Contraseña de Administradora</label>
+                    <input type="password" id="adminPasswordInput" placeholder="Ingresa clave" required
+                           class="w-full px-4 py-2.5 rounded-2xl border border-slate-300 text-sm focus:ring-2 focus:ring-pink-300 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-brandAccent hover:bg-pink-600 text-white font-extrabold py-3 rounded-2xl text-sm transition shadow-md">
+                    Ingresar al Panel CMS
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Article Modal -->
+    <div id="articleModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border-4 border-pastelMint max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-extrabold text-slateNavy font-title" id="articleModalTitle">Agregar Artículo</h3>
+                <button onclick="closeArticleModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form onsubmit="saveArticle(event)" class="space-y-3">
+                <input type="hidden" id="articleId">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Título del Artículo</label>
+                    <input type="text" id="articleTitle" required class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Categoría</label>
+                    <select id="articleCategory" class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                        <option value="Desarrollo Prefrontal">Desarrollo Prefrontal</option>
+                        <option value="Nutrición Guayas">Nutrición Guayas</option>
+                        <option value="Agua & Parásitos">Agua & Parásitos</option>
+                        <option value="Crianza & Estimulación">Crianza & Estimulación</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Resumen Corto</label>
+                    <textarea id="articleSummary" rows="2" required class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-teal-300 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Contenido Completo de la Investigación</label>
+                    <textarea id="articleContent" rows="4" required class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-teal-300 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">URL Imagen Portada</label>
+                    <input type="url" id="articleImage" placeholder="https://..." class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-pastelAqua hover:bg-teal-300 text-teal-950 font-extrabold py-2.5 rounded-xl text-xs transition shadow-xs mt-2">
+                    Guardar Artículo
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border-4 border-pastelYellow max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-extrabold text-slateNavy font-title" id="videoModalTitle">agregar Receta en Video</h3>
+                <button onclick="closeVideoModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form onsubmit="saveVideo(event)" class="space-y-3">
+                <input type="hidden" id="videoId">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Título de la Receta</label>
+                    <input type="text" id="videoTitle" required class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-amber-300 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">ID o Embed URL de YouTube</label>
+                    <input type="text" id="videoUrl" required placeholder="Ej: 3Q96iN92zGg o https://www.youtube.com/embed/..." class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-amber-300 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Ingredientes & Costo Local</label>
+                    <textarea id="videoIngredients" rows="2" required placeholder="Ej: 2 verdes ($0.25), 1 huevo ($0.15). Costo total: $0.50" class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-amber-300 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Descripción del Beneficio Neurobiológico</label>
+                    <textarea id="videoDesc" rows="2" required class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-amber-300 focus:outline-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-pastelYellow hover:bg-pastelDarkYellow text-amber-950 font-extrabold py-2.5 rounded-xl text-xs transition shadow-xs mt-2">
+                    Guardar Receta en Video
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Flashcard Modal -->
+    <div id="flashcardModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border-4 border-pastelPink max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-extrabold text-slateNavy font-title" id="flashcardModalTitle">Agregar Flashcard</h3>
+                <button onclick="closeFlashcardModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form onsubmit="saveFlashcard(event)" class="space-y-3">
+                <input type="hidden" id="flashcardId">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Categoría</label>
+                    <select id="flashcardCat" class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-pink-300 focus:outline-none">
+                        <option value="cognicion">Cognición & Cerebro</option>
+                        <option value="nutricion">Nutrición Guayas</option>
+                        <option value="saneamiento">Agua & Salud</option>
+                        <option value="crianza">Crianza & Mitos</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Pregunta / Mito (Anverso)</label>
+                    <textarea id="flashcardFront" rows="2" required class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-pink-300 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Explicación Evidenciada (Reverso)</label>
+                    <textarea id="flashcardBack" rows="3" required class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-pink-300 focus:outline-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brandAccent hover:bg-pink-600 text-white font-extrabold py-2.5 rounded-xl text-xs transition shadow-xs mt-2">
+                    Guardar Flashcard
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Stats Modal -->
+    <div id="statsModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border-4 border-slateNavy">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-extrabold text-slateNavy font-title">Editar Indicadores de Guayas</h3>
+                <button onclick="closeStatsModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form onsubmit="saveStats(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Desnutrición Crónica Rural (%)</label>
+                    <input type="text" id="statsDciInput" required class="w-full px-3 py-2 border rounded-xl text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Días Críticos Neurodesarrollo</label>
+                    <input type="text" id="statsDaysInput" required class="w-full px-3 py-2 border rounded-xl text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Acceso a Agua Segura (%)</label>
+                    <input type="text" id="statsWaterInput" required class="w-full px-3 py-2 border rounded-xl text-xs">
+                </div>
+                <button type="submit" class="w-full bg-slateNavy hover:bg-black text-white font-extrabold py-2.5 rounded-xl text-xs transition shadow-xs mt-2">
+                    Actualizar Indicadores
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Article Detail Reading Modal -->
+    <div id="articleDetailModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl border-4 border-pastelPink max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-4">
+                <span id="detailCategory" class="text-xs font-extrabold bg-pastelMint text-teal-900 px-3 py-1 rounded-full uppercase tracking-wider"></span>
+                <button onclick="closeArticleDetailModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <h2 id="detailTitle" class="text-xl sm:text-2xl font-extrabold text-slateNavy mb-3 font-title"></h2>
+            <div id="detailImageContainer" class="w-full h-56 rounded-2xl overflow-hidden mb-4 bg-slate-100 hidden">
+                <img id="detailImage" src="" alt="Portada Artículo" class="w-full h-full object-cover">
+            </div>
+            <div id="detailContent" class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3 font-medium whitespace-pre-line"></div>
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // Data Structures
+        const defaultCantons = [
+            { id: 'balzar', name: 'Balzar (Rural)', icon: '🌾', dci: '31.4%', anemia: '48.2%', water: '34.0%', desc: 'Alta prevalencia de desnutrición asociada al uso de agua de pozo no tratada térmicamente y dietas con bajo aporte de hierro hemo.', intervention: 'Capacitación en hervido de agua prolongado y huertos comunitarios de lenteja.' },
+            { id: 'daule', name: 'Daule Periférico', icon: '🍚', dci: '26.1%', anemia: '41.5%', water: '45.0%', desc: 'Predominio de carbohidratos en la dieta básica infantil. Se enfatiza la combinación con cítricos para potenciar la absorción de hierro vegetal.', intervention: 'Talleres de combinación proteica (arroz con granos y huevo entero).' },
+            { id: 'milagro', name: 'Milagro Rural', icon: '🌽', dci: '28.3%', anemia: '44.0%', water: '38.5%', desc: 'Brechas significativas en desarrollo lingüístico a los 2 años producto de episodios anemizantes continuos en lactantes.', intervention: 'Entrega comunitaria de suplementación micronutritiva y sesiones de estimulación del habla.' },
+            { id: 'playas', name: 'Playas (Villamil)', icon: '🐟', dci: '24.8%', anemia: '39.0%', water: '52.0%', desc: 'Población con acceso a proteína marina, pero afectada por infecciones parasitarias por almacenamiento descubierto de agua.', intervention: 'Campaña de tanques cerrados de almacenamiento de agua y consumo de sardina local.' },
+            { id: 'tenguel', name: 'Tenguel', icon: '🍌', dci: '30.2%', anemia: '46.8%', water: '36.0%', desc: 'Zona bananera con normalización de la baja estatura como mito hereditario y menor estimulación cognitiva en el hogar.', intervention: 'Desmitificación de la baja talla mediante escuelas de campo para padres.' },
+            { id: 'samborondon', name: 'Samborondón Rural', icon: '🛶', dci: '27.0%', anemia: '42.1%', water: '40.0%', desc: 'Sectores ribereños. Fuerte impacto favorable mediante talleres de alimentación fortificada de bajo costo.', intervention: 'Brigadas móviles de evaluación del neurodesarrollo en recintos ribereños.' },
+            { id: 'salitre', name: 'Salitre', icon: '🤠', dci: '29.5%', anemia: '45.2%', water: '35.5%', desc: 'Zona montuvia con dietas altas en almidones y baja frecuencia de frutas ricas en vitamina C.', intervention: 'Incorporación de cítricos locales para triplicar la absorción de hierro vegetal.' },
+            { id: 'colimes', name: 'Colimes', icon: '🌱', dci: '32.1%', anemia: '49.0%', water: '31.0%', desc: 'Sector agropecuario con falta de saneamiento formal y mayor riesgo de parasitolosis en lactantes.', intervention: 'Filtros comunitarios de arena y cocción adecuada de tubérculos.' },
+            { id: 'santalucia', name: 'Santa Lucía', icon: '🌾', dci: '27.8%', anemia: '43.1%', water: '42.0%', desc: 'Comunidades arroceras que requieren diversificación nutricional con leguminosas y huevos.', intervention: 'Talleres prácticos de cocina económica para la primera infancia.' }
+        ];
+
+        const defaultArticles = [
+            {
+                id: '1',
+                title: 'Impacto Neurobiológico de la Desnutrición en el Córtex Prefrontal',
+                category: 'Desarrollo Prefrontal',
+                summary: 'La falta de hierro y zinc en los primeros 1.000 días frena la sinaptogénesis y la mielinización de la memoria de trabajo.',
+                content: 'La desnutrición crónica infantil en sectores rurales de Guayas compromete directamente la microarquitectura cerebral. Durante los primeros 24 meses de vida, la carencia de hierro, zinc y ácidos grasos esenciales ralentiza la formación de sinapsis en el córtex prefrontal. En la etapa de educación inicial y primaria, esta brecha se manifiesta en una menor capacidad de retención de memoria operativa, fatiga intelectual y retraso en el lenguaje expresivo.',
+                image: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: '2',
+                title: 'Absorción de Hierro con Ingredientes Locales de Guayas',
+                category: 'Nutrición Guayas',
+                summary: 'Estrategias alimentarias usando plátano verde, legumbres y frutos cítricos para combatir la anemia infantil.',
+                content: 'Para familias de recursos limitados en la provincia del Guayas, la compra diaria de carnes rojas puede resultar económicamente inviable. Sin embargo, combinar fuentes vegetales ricas en hierro (lentejas, fréjol, espinaca o huevo entero) con unas gotas de limón agrio o naranja triplica la absorción intestinal del mineral, protegiendo las funciones cognitivas del lactante.',
+                image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: '3',
+                title: 'Agua No Tratada y Parasitosis: La Barrera Invisible',
+                category: 'Agua & Parásitos',
+                summary: 'Las infecciones diarreicas recurrentes dañan la mucosa intestinal e impiden fijar nutrientes en el cerebro.',
+                content: 'Los reportes de la OPS confirman que el consumo de agua almacenada en tanques sin tapa provoca cuadros recurrentes de parasitosis. Aunque el niño reciba alimentos nutritivos, las microvellosidades intestinales inflamadas no logran absorber los nutrientes. El hervido continuo del agua por al menos 3 minutos es una medida indispensable para erradicar la anemia.',
+                image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4e?auto=format&fit=crop&w=600&q=80'
+            }
+        ];
+
+        const defaultIngredients = [
+            { id: 'huevo', name: '🥚 Huevo Entero', iron: 25, protein: 35, energy: 20, desc: 'Excelente proteína para sinaptogénesis.' },
+            { id: 'lenteja', name: '🍲 Lenteja / Fréjol', iron: 35, protein: 25, energy: 25, desc: 'Hierro vegetal de alto rendimiento económico.' },
+            { id: 'verde', name: '🍌 Plátano Verde / Maduro', iron: 10, protein: 10, energy: 40, desc: 'Carbohidrato complejo para energía diaria.' },
+            { id: 'limon', name: '🍋 Limón / Naranja', iron: 30, protein: 0, energy: 5, desc: 'Vitamina C que triplica la absorción de hierro.' },
+            { id: 'sardina', name: '🐟 Sardina / Pescado', iron: 30, protein: 40, energy: 20, desc: 'Ácidos grasos Omega-3 para mielinización cerebral.' },
+            { id: 'yuca', name: '🍠 Yuca / Camote', iron: 5, protein: 5, energy: 35, desc: 'Energía calórica de bajo costo.' },
+            { id: 'espinaca', name: '🥬 Espinaca / Hojas Verdes', iron: 20, protein: 10, energy: 10, desc: 'Micronutrientes folicos esenciales.' }
+        ];
+
+        let selectedIngredients = ['huevo', 'verde', 'limon'];
+
+        const defaultVideos = [
+            {
+                id: 'v1',
+                title: 'Majado Nutritivo de Verde con Huevo y Espinaca',
+                url: 'https://www.youtube-nocookie.com/embed/3Q96iN92zGg?autoplay=0&rel=0&modestbranding=1&enablejsapi=1',
+                ingredients: '2 verdes ($0.25), 1 huevo ($0.15), espinaca ($0.10). Costo total: $0.50',
+                desc: 'Desayuno fortificado de bajo costo con alto valor energético y hierro para niños mayores de 6 meses en zonas rurales.'
+            },
+            {
+                id: 'v2',
+                title: 'Crema de Lenteja y Yuca con Gotas de Limón',
+                url: 'https://www.youtube-nocookie.com/embed/vBvPzL4wR4w?autoplay=0&rel=0&modestbranding=1&enablejsapi=1',
+                ingredients: '1/2 taza de lenteja ($0.20), 1 trozo de yuca ($0.15), 1 limón ($0.05). Costo total: $0.40',
+                desc: 'Plato tradicional costeño adaptado con vitamina C para maximizar la absorción de hierro vegetal y prevenir la anemia.'
+            },
+            {
+                id: 'v3',
+                title: 'Papilla de Madurito Cocinado con Queso Fresco',
+                url: 'https://www.youtube-nocookie.com/embed/W98p5W84t_U?autoplay=0&rel=0&modestbranding=1&enablejsapi=1',
+                ingredients: '1 plátano maduro ($0.20), 1 trozo de queso fresco ($0.25). Costo total: $0.45',
+                desc: 'Aporte de zinc, calcio y carbohidratos saludables para favorecer el desarrollo neurobiológico en los primeros 1.000 días.'
+            }
+        ];
+
+        const defaultFlashcards = [
+            {
+                id: '1',
+                category: 'cognicion',
+                front: '🧠 ¿La desnutrición crónica afecta la capacidad de aprendizaje en la escuela?',
+                back: 'Sí. Reduce la densidad de conexiones neuronales en el córtex prefrontal, afectando la memoria de trabajo, la atención y el razonamiento a futuro.'
+            },
+            {
+                id: '2',
+                category: 'nutricion',
+                front: '🍌 ¿Es posible lograr una alta nutrición sin carnes costosas?',
+                back: '¡Totalmente! Combinar verde, lentejas o huevos con vitamina C (limón) genera proteínas y hierro de excelente calidad nutricional.'
+            },
+            {
+                id: '3',
+                category: 'crianza',
+                front: '📉 ¿"Es bajito porque sus padres son bajitos" es siempre verdad?',
+                back: 'No. En el 85% de los casos rurales se confunde la talla baja provocada por Desnutrición Crónica Infantil (DCI) con un factor hereditario.'
+            },
+            {
+                id: '4',
+                category: 'saneamiento',
+                front: '💧 ¿Por qué hervir el agua influye en el rendimiento intelectual?',
+                back: 'Porque previene parásitos intestinales que provocan diarrea y anemia, asegurando que los nutrientes lleguen al cerebro del niño.'
+            }
+        ];
+
+        // Global States
+        let isAdmin = false;
+        let cantons = defaultCantons;
+        let articles = JSON.parse(localStorage.getItem('ns_articles_v3')) || defaultArticles;
+        let videos = JSON.parse(localStorage.getItem('ns_videos_v3')) || defaultVideos;
+        let flashcards = JSON.parse(localStorage.getItem('ns_flashcards_v3')) || defaultFlashcards;
+        let stats = JSON.parse(localStorage.getItem('ns_stats_v3')) || { dci: '27.7%', days: '1,000', water: '41.2%' };
+        
+        let activeSimCondition = 'adecuada';
+        let activeFlashcardCategory = 'todas';
+
+        // Window Load Initialization
+        window.onload = function() {
+            renderStats();
+            renderCantons();
+            selectCanton('balzar');
+            updateSimulator();
+            renderArticles();
+            renderVideos();
+            renderFlashcards();
+            renderPlateCalculator();
+        };
+
+        function saveData() {
+            localStorage.setItem('ns_articles_v3', JSON.stringify(articles));
+            localStorage.setItem('ns_videos_v3', JSON.stringify(videos));
+            localStorage.setItem('ns_flashcards_v3', JSON.stringify(flashcards));
+            localStorage.setItem('ns_stats_v3', JSON.stringify(stats));
+        }
+
+        // Init Plate Calculator
+        function renderPlateCalculator() {
+            const container = document.getElementById('ingredientOptions');
+            if (!container) return;
+            container.innerHTML = '';
+
+            defaultIngredients.forEach(ing => {
+                const isChecked = selectedIngredients.includes(ing.id);
+                const item = document.createElement('label');
+                item.className = `flex items-center p-3 rounded-2xl border cursor-pointer transition ${isChecked ? 'bg-pastelYellow border-amber-300 shadow-xs' : 'bg-slate-50 border-gray-200 hover:bg-pink-50'}`;
+                item.innerHTML = `
+                    <input type="checkbox" value="${ing.id}" ${isChecked ? 'checked' : ''} onchange="toggleIngredient('${ing.id}')" class="w-4 h-4 text-pink-600 rounded focus:ring-pink-400">
+                    <div class="ml-3">
+                        <span class="text-xs font-extrabold text-slateNavy block">${ing.name}</span>
+                        <span class="text-[10px] text-slate-500 block leading-tight font-medium">${ing.desc}</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+            updatePlateScores();
+        }
+
+        function toggleIngredient(id) {
+            if (selectedIngredients.includes(id)) {
+                selectedIngredients = selectedIngredients.filter(x => x !== id);
+            } else {
+                selectedIngredients.push(id);
+            }
+            renderPlateCalculator();
+        }
+
+        function updatePlateScores() {
+            let totalIron = 0;
+            let totalProtein = 0;
+            let totalEnergy = 0;
+
+            selectedIngredients.forEach(id => {
+                const ing = defaultIngredients.find(x => x.id === id);
+                if (ing) {
+                    totalIron += ing.iron;
+                    totalProtein += ing.protein;
+                    totalEnergy += ing.energy;
+                }
+            });
+
+            totalIron = Math.min(100, totalIron);
+            totalProtein = Math.min(100, totalProtein);
+            totalEnergy = Math.min(100, totalEnergy);
+
+            document.getElementById('scoreIron').innerText = `${totalIron}%`;
+            document.getElementById('barIron').style.width = `${totalIron}%`;
+            document.getElementById('scoreProtein').innerText = `${totalProtein}%`;
+            document.getElementById('barProtein').style.width = `${totalProtein}%`;
+            document.getElementById('scoreEnergy').innerText = `${totalEnergy}%`;
+            document.getElementById('barEnergy').style.width = `${totalEnergy}%`;
+
+            const badge = document.getElementById('plateScoreBadge');
+            const advice = document.getElementById('plateAdvice');
+
+            if (totalIron >= 60 && totalProtein >= 60 && totalEnergy >= 40) {
+                badge.innerText = '✨ Plato Completo Neuro-Nutritivo';
+                badge.className = 'bg-emerald-200 text-emerald-900 text-xs font-extrabold px-3 py-1 rounded-full';
+                advice.innerText = '¡Excelente combinación! Este plato aporta la proteína necesaria para la formación de sinapsis y el hierro fortificado para prevenir la fatiga cognitiva.';
+            } else if (totalIron < 50) {
+                badge.innerText = '⚠️ Deficiente en Hierro';
+                badge.className = 'bg-pink-200 text-pink-900 text-xs font-extrabold px-3 py-1 rounded-full';
+                advice.innerText = 'Atención: Falta vitamina C (limón/naranja) o legumbres/huevos/pescado. Sin hierro, el niño corre riesgo de anemia y menor retención escolar.';
+            } else {
+                badge.innerText = '⚡ Aporte Moderado';
+                badge.className = 'bg-amber-200 text-amber-900 text-xs font-extrabold px-3 py-1 rounded-full';
+                advice.innerText = 'Agrega una fuente de proteína adicional (huevo o pescado) para garantizar la maduración del córtex prefrontal.';
+            }
+        }
+
+        // Render Statistics
+        function renderStats() {
+            document.getElementById('statDci').innerText = stats.dci;
+            document.getElementById('statDays').innerText = stats.days;
+            document.getElementById('statWater').innerText = stats.water;
+            document.getElementById('statWaterBar').style.width = stats.water;
+        }
+
+        // Render Guayas Cantons Extended
+        function renderCantons() {
+            const container = document.getElementById('cantonButtonsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            cantons.forEach(c => {
+                const btn = document.createElement('button');
+                btn.onclick = () => selectCanton(c.id);
+                btn.id = `cantonBtn_${c.id}`;
+                btn.className = 'canton-btn bg-white hover:bg-pink-50 border border-pink-200 text-slate-800 p-3 rounded-2xl text-xs font-extrabold flex items-center gap-2 transition text-left shadow-xs';
+                btn.innerHTML = `<span class="text-lg">${c.icon}</span> <span>${c.name}</span>`;
+                container.appendChild(btn);
+            });
+        }
+
+        function selectCanton(id) {
+            const canton = cantons.find(c => c.id === id);
+            if (!canton) return;
+
+            document.querySelectorAll('.canton-btn').forEach(b => {
+                b.classList.remove('bg-pastelPink', 'border-pink-400');
+                b.classList.add('bg-white');
+            });
+            const activeBtn = document.getElementById(`cantonBtn_${id}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white');
+                activeBtn.classList.add('bg-pastelPink', 'border-pink-400');
+            }
+
+            document.getElementById('cantonName').innerText = canton.name;
+            document.getElementById('cantonIcon').innerText = canton.icon;
+            document.getElementById('cantonDesc').innerText = canton.desc;
+            document.getElementById('cantonDci').innerText = canton.dci;
+            document.getElementById('cantonAnemia').innerText = canton.anemia;
+            document.getElementById('cantonWater').innerText = canton.water;
+            document.getElementById('cantonIntervention').innerText = canton.intervention || 'Talleres socioeducativos de alimentación complementaria y saneamiento de agua.';
+        }
+
+        // Brain Simulator Logic
+        function setSimCondition(cond) {
+            activeSimCondition = cond;
+            const btnAdecuada = document.getElementById('btnCondAdecuada');
+            const btnDesnutricion = document.getElementById('btnCondDesnutricion');
+
+            if (cond === 'adecuada') {
+                btnAdecuada.className = 'py-3 px-4 rounded-2xl text-xs font-extrabold transition border border-teal-300 bg-pastelMint text-teal-950 shadow-xs';
+                btnDesnutricion.className = 'py-3 px-4 rounded-2xl text-xs font-extrabold transition border border-gray-200 bg-white text-gray-600 hover:bg-pink-50';
+            } else {
+                btnDesnutricion.className = 'py-3 px-4 rounded-2xl text-xs font-extrabold transition border border-pink-400 bg-pastelPink text-pink-900 shadow-xs';
+                btnAdecuada.className = 'py-3 px-4 rounded-2xl text-xs font-extrabold transition border border-gray-200 bg-white text-gray-600 hover:bg-teal-50';
+            }
+            updateSimulator();
+        }
+
+        function updateSimulator() {
+            const ageStep = document.getElementById('simAgeRange').value;
+            const ageLabels = { '1': '6 Meses', '2': '12 Meses', '3': '24 Meses (2 Años)', '4': '5 Años' };
+            document.getElementById('simAgeLabel').innerText = ageLabels[ageStep] || '24 Meses';
+
+            const brainIcon = document.getElementById('brainIcon');
+            const densityText = document.getElementById('simDensityText');
+            const simTitle = document.getElementById('simTitle');
+            const simDesc = document.getElementById('simDesc');
+            const scoreMemory = document.getElementById('scoreMemory');
+            const barMemory = document.getElementById('barMemory');
+            const scoreLang = document.getElementById('scoreLang');
+            const barLang = document.getElementById('barLang');
+
+            if (activeSimCondition === 'adecuada') {
+                brainIcon.style.color = '#A3E4D7';
+                const density = 70 + (parseInt(ageStep) * 6);
+                densityText.innerText = `Densidad Sináptica: Óptima (${density}%)`;
+                simTitle.innerText = `Desarrollo a los ${ageLabels[ageStep]} (Nutrición Completa)`;
+                simDesc.innerText = `Mielinización biológica en el córtex prefrontal. Las redes neuronales permiten retención fluida de memoria de trabajo, concentración y lenguaje expansivo.`;
+                
+                const memScore = Math.min(98, 70 + parseInt(ageStep) * 7);
+                const langScore = Math.min(95, 65 + parseInt(ageStep) * 8);
+                scoreMemory.innerText = `${memScore}%`;
+                barMemory.style.width = `${memScore}%`;
+                scoreLang.innerText = `${langScore}%`;
+                barLang.style.width = `${langScore}%`;
+            } else {
+                brainIcon.style.color = '#F7A8B8';
+                const density = Math.max(20, 50 - (parseInt(ageStep) * 6));
+                densityText.innerText = `Densidad Sináptica: Reducida (${density}%)`;
+                simTitle.innerText = `Desarrollo a los ${ageLabels[ageStep]} (Desnutrición Crónica)`;
+                simDesc.innerText = `Déficit continuo de micronutrientes frena la velocidad de comunicación neuronal. El niño muestra fatiga cognitiva prematura y rezago en el lenguaje.`;
+                
+                const memScore = Math.max(25, 55 - parseInt(ageStep) * 8);
+                const langScore = Math.max(20, 50 - parseInt(ageStep) * 9);
+                scoreMemory.innerText = `${memScore}%`;
+                barMemory.style.width = `${memScore}%`;
+                scoreLang.innerText = `${langScore}%`;
+                barLang.style.width = `${langScore}%`;
+            }
+        }
+
+        // Render Research Articles
+        function renderArticles(filterText = '') {
+            const container = document.getElementById('articlesContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const filtered = articles.filter(a => 
+                a.title.toLowerCase().includes(filterText.toLowerCase()) || 
+                a.summary.toLowerCase().includes(filterText.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center text-xs text-slate-500 py-8">No se encontraron artículos con ese criterio.</p>`;
+                return;
+            }
+
+            filtered.forEach(art => {
+                const card = document.createElement('div');
+                card.className = 'glass-card p-6 flex flex-col justify-between relative group hover:shadow-lg transition';
+
+                let adminBtns = '';
+                if (isAdmin) {
+                    adminBtns = `
+                        <div class="absolute top-4 right-4 flex gap-1 z-10">
+                            <button onclick="openArticleModal('${art.id}')" class="bg-amber-100 text-amber-900 p-1.5 rounded-full hover:bg-amber-200 text-xs shadow-xs"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteArticle('${art.id}')" class="bg-red-100 text-red-900 p-1.5 rounded-full hover:bg-red-200 text-xs shadow-xs"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    ${adminBtns}
+                    <div>
+                        <div class="w-full h-44 rounded-2xl overflow-hidden mb-4 bg-pastelPink/50">
+                            <img src="${art.image || 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80'}" 
+                                 onerror="this.src='https://placehold.co/400x200/FFE5EC/1E293B?text=Nutriendo+Sonrisas'"
+                                 alt="${art.title}" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] font-extrabold bg-pastelMint text-teal-900 px-3 py-1 rounded-full uppercase tracking-wider">${art.category}</span>
+                        <h4 class="font-extrabold text-slateNavy text-base mt-2 leading-snug font-title">${art.title}</h4>
+                        <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed font-medium">${art.summary}</p>
+                    </div>
+                    <button onclick="openArticleDetail('${art.id}')" class="mt-5 text-xs font-extrabold text-brandAccent hover:text-pink-600 flex items-center gap-1">
+                        Leer investigación completa <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterArticles() {
+            const text = document.getElementById('articleSearchInput').value;
+            renderArticles(text);
+        }
+
+        // Helper to format YouTube Embed URL cleanly
+        function formatYoutubeEmbed(urlOrId) {
+            if (!urlOrId) return 'https://www.youtube-nocookie.com/embed/3Q96iN92zGg?autoplay=0&rel=0&modestbranding=1&enablejsapi=1';
+            let id = urlOrId.trim();
+            if (id.includes('youtube.com/embed/')) {
+                const parts = id.split('youtube.com/embed/');
+                id = parts[1].split('?')[0];
+            } else if (id.includes('watch?v=')) {
+                id = id.split('watch?v=')[1].split('&')[0];
+            } else if (id.includes('youtu.be/')) {
+                id = id.split('youtu.be/')[1].split('?')[0];
+            }
+            return `https://www.youtube-nocookie.com/embed/${id}?autoplay=0&rel=0&modestbranding=1&enablejsapi=1`;
+        }
+
+        // Render Direct Embed Recipe Videos
+        function renderVideos() {
+            const container = document.getElementById('videosContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            videos.forEach(vid => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl overflow-hidden shadow-sm border border-pink-100 hover:shadow-md transition relative flex flex-col justify-between';
+
+                let adminBtns = '';
+                if (isAdmin) {
+                    adminBtns = `
+                        <div class="absolute top-3 right-3 flex gap-1 z-20">
+                            <button onclick="openVideoModal('${vid.id}')" class="bg-amber-100 text-amber-900 p-1.5 rounded-full hover:bg-amber-200 text-xs shadow-xs"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteVideo('${vid.id}')" class="bg-red-100 text-red-900 p-1.5 rounded-full hover:bg-red-200 text-xs shadow-xs"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                }
+
+                const cleanEmbedUrl = formatYoutubeEmbed(vid.url);
+
+                card.innerHTML = `
+                    ${adminBtns}
+                    <div class="w-full h-52 bg-slate-900 relative">
+                        <iframe class="w-full h-full" 
+                                src="${cleanEmbedUrl}" 
+                                title="${vid.title}" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-extrabold text-slateNavy text-base leading-snug font-title mb-2">${vid.title}</h4>
+                            <div class="bg-pastelYellow/80 p-3 rounded-2xl border border-amber-200 text-[11px] font-extrabold text-amber-950 mb-2">
+                                <i class="fa-solid fa-basket-shopping text-amber-700 mr-1"></i> ${vid.ingredients || 'Ingredientes económicos de Guayas'}
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed font-medium">${vid.desc}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Render Interactive Flashcards
+        function renderFlashcards() {
+            const container = document.getElementById('flashcardsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const filtered = activeFlashcardCategory === 'todas'
+                ? flashcards
+                : flashcards.filter(f => f.category === activeFlashcardCategory);
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center text-xs font-extrabold text-slate-400 py-12 bg-white rounded-3xl border border-dashed border-pink-200">
+                        No hay tarjetas disponibles en esta categoría.
+                    </div>
+                `;
+                return;
+            }
+
+            const cardThemes = {
+                cognicion: {
+                    borderFront: 'border-purple-200 hover:border-purple-300',
+                    bgFront: 'bg-gradient-to-b from-purple-50/90 via-white to-purple-100/50',
+                    badgeBg: 'bg-purple-100 text-purple-800 border-purple-200',
+                    iconBg: 'bg-purple-100 text-purple-600',
+                    icon: '🧠',
+                    bgBack: 'bg-purple-950 text-white border-purple-800',
+                    accentBadge: 'bg-purple-900 text-purple-200'
+                },
+                nutricion: {
+                    borderFront: 'border-emerald-200 hover:border-emerald-300',
+                    bgFront: 'bg-gradient-to-b from-emerald-50/90 via-white to-teal-100/50',
+                    badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+                    iconBg: 'bg-emerald-100 text-emerald-600',
+                    icon: '🥗',
+                    bgBack: 'bg-emerald-950 text-white border-emerald-800',
+                    accentBadge: 'bg-emerald-900 text-emerald-200'
+                },
+                saneamiento: {
+                    borderFront: 'border-sky-200 hover:border-sky-300',
+                    bgFront: 'bg-gradient-to-b from-sky-50/90 via-white to-blue-100/50',
+                    badgeBg: 'bg-sky-100 text-sky-800 border-sky-200',
+                    iconBg: 'bg-sky-100 text-sky-600',
+                    icon: '🚰',
+                    bgBack: 'bg-sky-950 text-white border-sky-800',
+                    accentBadge: 'bg-sky-900 text-sky-200'
+                },
+                crianza: {
+                    borderFront: 'border-amber-200 hover:border-amber-300',
+                    bgFront: 'bg-gradient-to-b from-amber-50/90 via-white to-pink-100/50',
+                    badgeBg: 'bg-amber-100 text-amber-800 border-amber-200',
+                    iconBg: 'bg-amber-100 text-amber-600',
+                    icon: '👨‍👩‍👧',
+                    bgBack: 'bg-amber-950 text-white border-amber-800',
+                    accentBadge: 'bg-amber-900 text-amber-200'
+                }
+            };
+
+            filtered.forEach(fc => {
+                const theme = cardThemes[fc.category] || cardThemes.cognicion;
+                const cardWrapper = document.createElement('div');
+                cardWrapper.className = 'flip-card h-[340px] perspective-1000 cursor-pointer relative group';
+                
+                cardWrapper.onclick = function(e) {
+                    if (e.target.closest('.admin-fc-btn')) return;
+                    cardWrapper.classList.toggle('flipped');
+                };
+
+                let adminBtns = '';
+                if (isAdmin) {
+                    adminBtns = `
+                        <div class="absolute top-3 right-3 flex gap-1 z-30">
+                            <button onclick="openFlashcardModal('${fc.id}')" class="admin-fc-btn bg-white text-amber-900 p-2 rounded-full hover:bg-amber-100 text-xs shadow-md border border-amber-300 transition"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteFlashcard('${fc.id}')" class="admin-fc-btn bg-white text-red-900 p-2 rounded-full hover:bg-red-100 text-xs shadow-md border border-red-300 transition"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                }
+
+                cardWrapper.innerHTML = `
+                    ${adminBtns}
+                    <div class="flip-card-inner w-full h-full rounded-3xl">
+                        <!-- FRONT -->
+                        <div class="flip-card-front ${theme.bgFront} ${theme.borderFront} border-2 rounded-3xl p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition-all duration-300">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-extrabold ${theme.badgeBg} border px-3 py-1 rounded-full uppercase tracking-wider">
+                                    ${fc.category.toUpperCase()}
+                                </span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-brandAccent/60"></span>
+                            </div>
+
+                            <div class="my-auto text-center space-y-3 px-1">
+                                <div class="w-14 h-14 rounded-2xl ${theme.iconBg} mx-auto flex items-center justify-center text-2xl shadow-xs transition transform group-hover:scale-110">
+                                    ${theme.icon}
+                                </div>
+                                <h4 class="font-extrabold text-slateNavy text-base sm:text-lg leading-snug font-title">
+                                    ${fc.front}
+                                </h4>
+                            </div>
+
+                            <div class="w-full text-center pt-2">
+                                <span class="inline-flex items-center gap-2 text-xs font-extrabold text-slate-600 bg-white/90 border border-slate-200 px-4 py-2 rounded-full shadow-xs group-hover:bg-brandAccent group-hover:text-white transition-all duration-300">
+                                    <span>Toca para voltear</span>
+                                    <i class="fa-solid fa-arrows-rotate text-[11px]"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="flip-card-back ${theme.bgBack} border-2 rounded-3xl p-6 flex flex-col justify-between shadow-xl">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest ${theme.accentBadge} px-2.5 py-1 rounded-full">
+                                    ✓ Evidencia Científica
+                                </span>
+                                <span class="text-xs">💡</span>
+                            </div>
+
+                            <div class="my-auto py-2 overflow-y-auto max-h-[190px] text-center px-1">
+                                <p class="text-xs sm:text-sm font-semibold text-white/95 leading-relaxed">
+                                    "${fc.back}"
+                                </p>
+                            </div>
+
+                            <div class="w-full text-center border-t border-white/10 pt-3">
+                                <span class="text-[11px] font-bold text-white/70 hover:text-white transition flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-rotate-left"></i> Haz clic para regresar
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(cardWrapper);
+            });
+        }
+
+        function filterFlashcards(cat, btnElement) {
+            activeFlashcardCategory = cat;
+            document.querySelectorAll('.fc-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brandAccent', 'text-white', 'shadow-md', 'scale-105');
+                btn.classList.add('bg-white', 'text-slate-800');
+            });
+            
+            if (btnElement) {
+                btnElement.classList.remove('bg-white', 'text-slate-800');
+                btnElement.classList.add('bg-brandAccent', 'text-white', 'shadow-md', 'scale-105');
+            }
+            renderFlashcards();
+        }
+
+        // Administrative Controls & Authentication
+        function toggleAdminModal() {
+            if (isAdmin) {
+                isAdmin = false;
+                document.getElementById('adminToolbar').classList.add('hidden');
+                document.getElementById('adminStatusBadge').classList.add('hidden');
+                document.getElementById('adminBtnText').innerText = 'Modo Administradora';
+                renderArticles();
+                renderVideos();
+                renderFlashcards();
+            } else {
+                document.getElementById('adminModal').classList.remove('hidden');
+            }
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPasswordInput').value;
+            if (pass === 'leslie') {
+                isAdmin = true;
+                document.getElementById('adminModal').classList.add('hidden');
+                document.getElementById('adminToolbar').classList.remove('hidden');
+                document.getElementById('adminStatusBadge').classList.remove('hidden');
+                document.getElementById('adminBtnText').innerText = 'Salir de Admin';
+                document.getElementById('adminPasswordInput').value = '';
+                renderArticles();
+                renderVideos();
+                renderFlashcards();
+            } else {
+                alert('Contraseña incorrecta.');
+            }
+        }
+
+        // Article CRUD
+        function openArticleModal(id = null) {
+            document.getElementById('articleModal').classList.remove('hidden');
+            if (id) {
+                const a = articles.find(x => x.id === id);
+                document.getElementById('articleModalTitle').innerText = 'Editar Artículo';
+                document.getElementById('articleId').value = a.id;
+                document.getElementById('articleTitle').value = a.title;
+                document.getElementById('articleCategory').value = a.category;
+                document.getElementById('articleSummary').value = a.summary;
+                document.getElementById('articleContent').value = a.content;
+                document.getElementById('articleImage').value = a.image || '';
+            } else {
+                document.getElementById('articleModalTitle').innerText = 'Agregar Artículo';
+                document.getElementById('articleId').value = '';
+                document.getElementById('articleTitle').value = '';
+                document.getElementById('articleSummary').value = '';
+                document.getElementById('articleContent').value = '';
+                document.getElementById('articleImage').value = '';
+            }
+        }
+        function closeArticleModal() { document.getElementById('articleModal').classList.add('hidden'); }
+
+        function saveArticle(e) {
+            e.preventDefault();
+            const id = document.getElementById('articleId').value || Date.now().toString();
+            const title = document.getElementById('articleTitle').value;
+            const category = document.getElementById('articleCategory').value;
+            const summary = document.getElementById('articleSummary').value;
+            const content = document.getElementById('articleContent').value;
+            const image = document.getElementById('articleImage').value;
+
+            const idx = articles.findIndex(a => a.id === id);
+            if (idx > -1) {
+                articles[idx] = { id, title, category, summary, content, image };
+            } else {
+                articles.unshift({ id, title, category, summary, content, image });
+            }
+            saveData();
+            renderArticles();
+            closeArticleModal();
+        }
+
+        function deleteArticle(id) {
+            if (confirm('¿Eliminar este artículo?')) {
+                articles = articles.filter(a => a.id !== id);
+                saveData();
+                renderArticles();
+            }
+        }
+
+        // Video CRUD
+        function openVideoModal(id = null) {
+            document.getElementById('videoModal').classList.remove('hidden');
+            if (id) {
+                const v = videos.find(x => x.id === id);
+                document.getElementById('videoModalTitle').innerText = 'Editar Receta en Video';
+                document.getElementById('videoId').value = v.id;
+                document.getElementById('videoTitle').value = v.title;
+                document.getElementById('videoIngredients').value = v.ingredients || '';
+                document.getElementById('videoDesc').value = v.desc;
+                document.getElementById('videoUrl').value = v.url;
+            } else {
+                document.getElementById('videoModalTitle').innerText = 'Agregar Receta en Video';
+                document.getElementById('videoId').value = '';
+                document.getElementById('videoTitle').value = '';
+                document.getElementById('videoIngredients').value = '';
+                document.getElementById('videoDesc').value = '';
+                document.getElementById('videoUrl').value = '';
+            }
+        }
+        function closeVideoModal() { document.getElementById('videoModal').classList.add('hidden'); }
+
+        function saveVideo(e) {
+            e.preventDefault();
+            const id = document.getElementById('videoId').value || Date.now().toString();
+            const title = document.getElementById('videoTitle').value;
+            const ingredients = document.getElementById('videoIngredients').value;
+            const desc = document.getElementById('videoDesc').value;
+            const rawUrl = document.getElementById('videoUrl').value;
+
+            const idx = videos.findIndex(v => v.id === id);
+            if (idx > -1) {
+                videos[idx] = { id, title, ingredients, desc, url: rawUrl };
+            } else {
+                videos.unshift({ id, title, ingredients, desc, url: rawUrl });
+            }
+            saveData();
+            renderVideos();
+            closeVideoModal();
+        }
+
+        function deleteVideo(id) {
+            if (confirm('¿Eliminar esta receta en video?')) {
+                videos = videos.filter(v => v.id !== id);
+                saveData();
+                renderVideos();
+            }
+        }
+
+        // Flashcard CRUD
+        function openFlashcardModal(id = null) {
+            document.getElementById('flashcardModal').classList.remove('hidden');
+            if (id) {
+                const f = flashcards.find(x => x.id === id);
+                document.getElementById('flashcardModalTitle').innerText = 'Editar Flashcard';
+                document.getElementById('flashcardId').value = f.id;
+                document.getElementById('flashcardCat').value = f.category;
+                document.getElementById('flashcardFront').value = f.front;
+                document.getElementById('flashcardBack').value = f.back;
+            } else {
+                document.getElementById('flashcardModalTitle').innerText = 'Agregar Flashcard';
+                document.getElementById('flashcardId').value = '';
+                document.getElementById('flashcardCat').value = 'cognicion';
+                document.getElementById('flashcardFront').value = '';
+                document.getElementById('flashcardBack').value = '';
+            }
+        }
+        function closeFlashcardModal() { document.getElementById('flashcardModal').classList.add('hidden'); }
+
+        function saveFlashcard(e) {
+            e.preventDefault();
+            const id = document.getElementById('flashcardId').value || Date.now().toString();
+            const category = document.getElementById('flashcardCat').value;
+            const front = document.getElementById('flashcardFront').value;
+            const back = document.getElementById('flashcardBack').value;
+
+            const idx = flashcards.findIndex(f => f.id === id);
+            if (idx > -1) {
+                flashcards[idx] = { id, category, front, back };
+            } else {
+                flashcards.unshift({ id, category, front, back });
+            }
+            saveData();
+            renderFlashcards();
+            closeFlashcardModal();
+        }
+
+        function deleteFlashcard(id) {
+            if (confirm('¿Eliminar esta flashcard?')) {
+                flashcards = flashcards.filter(f => f.id !== id);
+                saveData();
+                renderFlashcards();
+            }
+        }
+
+        // Stats Editing
+        function openStatsModal() {
+            document.getElementById('statsModal').classList.remove('hidden');
+            document.getElementById('statsDciInput').value = stats.dci;
+            document.getElementById('statsDaysInput').value = stats.days;
+            document.getElementById('statsWaterInput').value = stats.water;
+        }
+        function closeStatsModal() { document.getElementById('statsModal').classList.add('hidden'); }
+
+        function saveStats(e) {
+            e.preventDefault();
+            stats.dci = document.getElementById('statsDciInput').value;
+            stats.days = document.getElementById('statsDaysInput').value;
+            stats.water = document.getElementById('statsWaterInput').value;
+            saveData();
+            renderStats();
+            closeStatsModal();
+        }
+
+        // Article Detail Modal
+        function openArticleDetail(id) {
+            const art = articles.find(a => a.id === id);
+            if (!art) return;
+            document.getElementById('detailTitle').innerText = art.title;
+            document.getElementById('detailCategory').innerText = art.category;
+            document.getElementById('detailContent').innerText = art.content;
+            
+            const imgCont = document.getElementById('detailImageContainer');
+            if (art.image) {
+                document.getElementById('detailImage').src = art.image;
+                imgCont.classList.remove('hidden');
+            } else {
+                imgCont.classList.add('hidden');
+            }
+            document.getElementById('articleDetailModal').classList.remove('hidden');
+        }
+        function closeArticleDetailModal() { document.getElementById('articleDetailModal').classList.add('hidden'); }
+    </script>
+</body>
+</html>
